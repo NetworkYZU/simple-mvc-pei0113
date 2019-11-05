@@ -13,6 +13,10 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%
+            Student student = (Student)request.getAttribute("student");
+        %>
+        <h1>Hello! <%=student.getName()%>! You got score: <%=student.getScore()%></h1>
         <h1>Oh! You need to keep going!</h1>
     </body>
 </html>

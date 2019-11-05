@@ -37,18 +37,19 @@ public class ShowScore extends HttpServlet {
         //按照分數選擇頁面
         //request.getRequestDispatcher(address).forward(request, response);
         if(id==null){
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/score-report/UnknownStudent.jsp");
+            rd.forward(request, response);
         }else if(student.getScore()<60){
             // 內轉址
             request.setAttribute("student", student);
             RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/score-report/LowScore.jsp");
             rd.forward(request, response);
-            //外轉址
-//            response.sendRedirect("bank-account/NegativeBalance.jsp");
         }else if(student.getScore()>70){
             request.setAttribute("student", student);
             RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/score-report/HighScore.jsp");
             rd.forward(request, response);
         }else{
+            request.setAttribute("student", student);
             RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/score-report/NormalScore.jsp");
             rd.forward(request, response);
         }
